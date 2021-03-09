@@ -11,16 +11,19 @@
       margin-top: 30px;
       margin-left: 30px;
     }
-    /* body {
-      padding-left: 20px;
-    } */
-    #press {
-      margin-left: 43%;
+    #card{
+      width: 50%;
+    } 
+   
+    @media (max-width:769px) {
+      #card{
+        width:100%
+      }
     }
   </style>
   <body class="bg-dark">
     <div class="container-fluid">
-      <div class="card w-50 mx-auto mt-5">
+      <div class="card mx-auto mt-5" id="card" >
         <div class="card-header">
           <h1 class="h1 text-center text-primary">FONT GETTER</h1>
         </div>
@@ -44,7 +47,7 @@
         </select>
         <div class="w-100 text-center" id="res"></div>
         <div class="w-100 text-center" id="res2"></div>
-        <ol class="chk w-25 mx-auto mt-4" id="order"></ol>
+        <ol class="chk mt-4 ms-2" id="order"></ol>
         <div id="res1" class="card-footer text-primary d-flex" >
         </div>
       </div>
