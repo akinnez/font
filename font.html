@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../mutan/bootstrap-5.0.0-beta1-dist/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css"
+    />
+    <title>GetFont</title>
+  </head>
+  <style>
+    input {
+      margin-top: 30px;
+      margin-left: 30px;
+    }
+    /* body {
+      padding-left: 20px;
+    } */
+    #press {
+      margin-left: 43%;
+    }
+  </style>
+  <body class="bg-dark">
+    <div class="container-fluid">
+      <div class="card w-50 mx-auto mt-5">
+        <div class="card-header">
+          <h1 class="h1 text-center text-primary">FONT GETTER</h1>
+        </div>
+        <h3 class="h3 text-center text-primary mt-4 mb-3" >Choose your font</h3>
+        <select
+          name=""
+          id="inpu"
+          class="mx-auto mt-2 form-control w-25"
+          onchange="inp()"
+        >
+          <option class="form-control" value="">Select</option>
+          <option class="form-control" value="h1" id="h1">H1</option>
+          <option class="form-control" value="h2" id="h2">H2</option>
+          <option class="form-control" value="h3" id="h3">H3</option>
+          <option class="form-control" value="h4" id="h4">H4</option>
+          <option class="form-control" value="h5" id="h5">H5</option>
+          <option class="form-control" value="h6" id="h6">H6</option>
+          <option class="form-control" value="p" id="p">P</option>
+          <option class="form-control" value="ol" id="ol">OL</option>
+          <option class="form-control" value="ul" id="ul">UL</option>
+        </select>
+        <div class="w-100 text-center" id="res"></div>
+        <div class="w-100 text-center" id="res2"></div>
+        <ol class="text-center chk w-25 mx-auto mt-4" id="order"></ol>
+        <div id="res1" class="card-footer text-primary d-flex" >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  let a;
+// .................................. creating buttons.........................
+
+  function button() {
+    let button = document.createElement("button");
+    button.className = "btn btn-sm btn-outline-primary";
+    button.id = "press";
+    button.innerHTML = "PRINT";
+    document.getElementById("res").appendChild(button);
+   document.getElementById("press").addEventListener("click", display);
+  }
+  function btn2() {
+    let btn2 = document.createElement("button");
+    btn2.className = "btn btn-sm btn-outline-primary ms-2";
+    btn2.id = "pre";
+    btn2.innerHTML = "U";
+    document.getElementById("res1").appendChild(btn2);
+    btn2.setAttribute("onclick","chkUnder()")
+  }
+  function btn3() {
+    let btn3 = document.createElement("button");
+    btn3.className = "btn btn-sm btn-outline-primary ms-2";
+    btn3.innerHTML = "I";
+    document.getElementById("res1").appendChild(btn3);
+    btn3.setAttribute("onclick","chkItalics()")
+  }
+  function btn4() {
+    let btn4 = document.createElement("button");
+    btn4.className = "btn btn-sm btn-outline-primary ms-2";
+    btn4.innerHTML = "B";
+    document.getElementById("res1").appendChild(btn4);
+    btn4.setAttribute("onclick","chkBold()")
+  }
+// ..................................input section.................
+function createInp() {
+  const input = document.createElement("input");
+    var p1 = document.createElement("p");
+    p1.appendChild(input);
+    input.className = "form-control mx-auto w-25";
+    input.id = "put";
+    clear()
+       document.getElementById("res").appendChild(p1);
+}
+// .................clear........................
+function clear() {
+  document.getElementById("res1").innerHTML = " ";
+    document.getElementById("res2").innerHTML = " ";
+    document.getElementById("res").innerHTML = " ";
+    document.getElementById("order").innerHTML = " ";
+}
+
+// .........................................checking for print body..........................
+
+  function inp() {
+    if (inpu.value == "ol" || inpu.value =="ul") {
+      createInp()
+      button()
+    }else{
+      createInp()
+      document.getElementById("put").addEventListener("keyup", display);
+    }  
+  }
+
+// ............ buttton functions................................................
+
+  function chkUnder() {
+     document.querySelector(".chk").style.textDecoration="underline"
+    }
+  function chkItalics() {
+     document.querySelector(".chk").style.fontStyle="italic"
+    }
+  function chkBold(){
+     document.querySelector(".chk").style.fontWeight="800"
+    }
+
+// .............................dispaly unit............................ 
+  function display() {
+    document.getElementById("res1").innerHTML = " ";
+    document.getElementById("res2").innerHTML = " ";
+    if (inpu.value == "h1") {
+      a = "h1";
+      head(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "h2") {
+      a = "h2";
+      head(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "h3") {
+      a = "h3";
+      head(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "h4") {
+      a = "h4";
+      head(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "h5") {
+      a = "h5";
+      head(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "h6") {
+      a = "h6";
+      head(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "p") {
+      a = "p";
+      head(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "ul") {
+      a = "ul";
+      list(); btn2(); btn3(); btn4();
+    } else if (inpu.value == "ol") {
+      a = "ol";
+      order(); btn2(); btn3(); btn4();
+    }
+    
+    function head() {
+      let pa = document.createElement(`${a}`);
+      pa.id="chk"
+      pa.className="chk"
+      let p = put.value;
+      pa.innerHTML = p;
+      document.getElementById("res2").appendChild(pa);
+    }
+    function list() {
+      let pa = document.createElement(`${a}`);
+      let p = put.value;
+      pa.innerHTML = `<li>${p}</li>`;
+      document.getElementById("order").appendChild(pa);
+    }
+    function order() {
+      let pa = document.createElement(`${a}`);
+      let p = put.value;
+      document.getElementById("order").innerHTML+= `<li>${p}</li>`
+    }
+   
+  }
+</script>
